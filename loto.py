@@ -21,13 +21,15 @@ class Card:
 
     def row_creator(self):
         self.get_num(self._num_in_card)
+        space = '  '
         for i in range(self._row_in_card):
-            a = '  ,' * 8
-            space = re.split(',', a)
-            nums = [' ' + str(i) + ' ' for i in self.num_in_rows[i * 5: i * 5 + 5]]  #
-            row = space + nums
-            random.shuffle(row)
-            self.rows.append(row)
+            nums = [j for j in self.num_in_rows[i * 5: i * 5 + 5]]
+            nums.sort()
+            nums = [' ' + str(j) + ' ' for j in nums]
+            for j in range(8):
+                index = random.randint(0, len(nums))
+                nums.insert(index, space)
+            self.rows.append(nums)
 
     def get_num(self, num_required):
         self.num_in_rows += random.sample(range(0, 91), num_required)
