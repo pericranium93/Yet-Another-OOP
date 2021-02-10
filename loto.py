@@ -23,8 +23,7 @@ class Card:
         self.get_num(self._num_in_card)
         space = '  '
         for i in range(self._row_in_card):
-            nums = [j for j in self.num_in_rows[i * 5: i * 5 + 5]]
-            nums.sort()
+            nums = sorted([j for j in self.num_in_rows[i * 5: i * 5 + 5]])
             nums = [' ' + str(j) + ' ' for j in nums]
             for j in range(8):
                 index = random.randint(0, len(nums))
